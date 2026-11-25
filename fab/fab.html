@@ -1,13 +1,92 @@
-<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>FAB | F + I</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="icon" type="image/png" href="assets/favicon.png"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="fab.css"></head><body class="admin-body"><header class="admin-top"><a class="brand" href="index.html">F <span>+</span> I</a><span>PAINEL DE CONTROLE</span><a href="index.html">Ver site ↗</a></header>
-<main class="admin-main"><section class="login-panel" id="loginPanel"><div class="admin-flower">🌻</div><p class="eyebrow">ÁREA DE ADMINISTRAÇÃO</p><h1>Olá, FAB.</h1><p>Acesse seu cantinho de edição.</p><form id="loginForm"><label for="password">Senha de acesso</label><input id="password" type="password" placeholder="Digite sua senha" required><button class="primary" type="submit">Entrar no FAB</button><p class="hint">Senha inicial: <b>girassol123</b> · Troque depois de entrar.</p><p id="loginError" class="error"></p></form></section>
-<section id="dashboard" hidden><div class="dash-heading"><div><p class="eyebrow">SEU ESPAÇO DE CRIAÇÃO</p><h1>Painel FAB</h1><p>Edite o conteúdo do site F + I.</p></div><button id="logout" class="secondary">Sair</button></div>
-<div class="warning"><b>Importante sobre esta versão:</b> sem um servidor ou banco de dados, as alterações e fotos ficam salvas somente neste navegador e neste dispositivo. Não sincronizam para o celular dela nem para outros visitantes. A senha também é uma proteção visual, não uma segurança real para publicação pública.</div>
-<div class="admin-grid">
-<article class="admin-card"><h2>♡ Textos e identidade</h2><div id="textFields" class="fields"></div><button id="saveTexts" class="primary">Salvar textos</button></article>
-<article class="admin-card"><h2>◷ Nosso contador</h2><label>Data e horário de início</label><input id="startDate" type="datetime-local"><button id="saveDate" class="primary">Salvar data</button></article>
-<article class="admin-card"><h2>🌻 Galeria de fotos</h2><p class="small">Envie fotos em qualquer proporção. Elas serão exibidas sem distorção.</p><label>Escolher fotos</label><input id="photoFiles" type="file" accept="image/*" multiple><label>Legenda (opcional, aplicada a todas)</label><input id="photoCaption" placeholder="Uma lembrança especial..."><button id="uploadPhotos" class="primary">Adicionar à galeria</button><div id="photoAdmin" class="photo-admin"></div></article>
-<article class="admin-card"><h2>✧ Versículos bíblicos</h2><div id="verseFields"></div><button id="addVerse" class="secondary">+ Adicionar versículo</button><button id="saveVerses" class="primary">Salvar versículos</button></article>
-<article class="admin-card"><h2>⌖ Mapa especial</h2><label>Local, endereço ou coordenadas</label><input id="mapQuery" placeholder="Ex.: Praça da cidade, Caxias - MA"><label>Link compartilhável do Google Maps (opcional)</label><input id="mapUrl" placeholder="Cole aqui o link do Google Maps"><button id="saveMap" class="primary">Salvar localização</button><p class="small">O mapa usa uma incorporação pública do Google Maps.</p></article>
-<article class="admin-card"><h2>◉ Visitas ao site</h2><div class="stat"><strong id="visitCount">—</strong><span>visitas registradas neste navegador</span></div><p class="small">Esta contagem não identifica quando ela entrou. Para registrar visitas de qualquer pessoa, com data e horário, é necessário um serviço externo de analytics ou backend.</p><button id="clearVisits" class="secondary">Zerar contador local</button></article>
-<article class="admin-card"><h2>⚙ Segurança local</h2><label>Nova senha do painel</label><input id="newPassword" type="password" placeholder="Digite uma nova senha"><button id="changePassword" class="primary">Alterar senha</button><p class="small">Não use esta senha como proteção de conteúdo privado: o código do site é público no GitHub Pages.</p></article>
-</div><p class="save-status" id="saveStatus" aria-live="polite"></p></section></main><script src="fab.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FAB | F + I</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;1,500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="fab.css">
+</head>
+
+<body class="admin-body">
+  <header class="admin-top"><a class="brand" href="index.html">F <span>+</span> I</a><span>PAINEL DE CONTROLE</span><a
+      href="index.html">Ver site ↗</a></header>
+  <main class="admin-main">
+    <section class="login-panel" id="loginPanel">
+      <div class="admin-flower">🌻</div>
+      <p class="eyebrow">ÁREA DE ADMINISTRAÇÃO</p>
+      <h1>Olá, FAB.</h1>
+      <p>Acesse seu cantinho de edição.</p>
+      <form id="loginForm"><label for="password">Senha de acesso</label><input id="password" type="password"
+          placeholder="Digite sua senha" required><button class="primary" type="submit">Entrar no FAB</button>
+        <p class="hint">Senha inicial: <b>girassol123</b> · Troque depois de entrar.</p>
+        <p id="loginError" class="error"></p>
+      </form>
+    </section>
+    <section id="dashboard" hidden>
+      <div class="dash-heading">
+        <div>
+          <p class="eyebrow">SEU ESPAÇO DE CRIAÇÃO</p>
+          <h1>Painel FAB</h1>
+          <p>Edite o conteúdo do site F + I.</p>
+        </div><button id="logout" class="secondary">Sair</button>
+      </div>
+      <div class="warning"><b>Importante sobre esta versão:</b> sem um servidor ou banco de dados, as alterações e fotos
+        ficam salvas somente neste navegador e neste dispositivo. Não sincronizam para o celular dela nem para outros
+        visitantes. A senha também é uma proteção visual, não uma segurança real para publicação pública.</div>
+      <div class="admin-grid">
+        <article class="admin-card">
+          <h2>♡ Textos e identidade</h2>
+          <div id="textFields" class="fields"></div><button id="saveTexts" class="primary">Salvar textos</button>
+        </article>
+        <article class="admin-card">
+          <h2>◷ Nosso contador</h2><label>Data e horário de início</label><input id="startDate"
+            type="datetime-local"><button id="saveDate" class="primary">Salvar data</button>
+        </article>
+        <article class="admin-card">
+          <h2>🌻 Galeria de fotos</h2>
+          <p class="small">Envie fotos em qualquer proporção. Elas serão exibidas sem distorção.</p><label>Escolher
+            fotos</label><input id="photoFiles" type="file" accept="image/*" multiple><label>Legenda (opcional, aplicada
+            a todas)</label><input id="photoCaption" placeholder="Uma lembrança especial..."><button id="uploadPhotos"
+            class="primary">Adicionar à galeria</button>
+          <div id="photoAdmin" class="photo-admin"></div>
+        </article>
+        <article class="admin-card">
+          <h2>✧ Versículos bíblicos</h2>
+          <div id="verseFields"></div><button id="addVerse" class="secondary">+ Adicionar versículo</button><button
+            id="saveVerses" class="primary">Salvar versículos</button>
+        </article>
+        <article class="admin-card">
+          <h2>⌖ Mapa especial</h2><label>Local, endereço ou coordenadas</label><input id="mapQuery"
+            placeholder="Ex.: Praça da cidade, Caxias - MA"><label>Link compartilhável do Google Maps
+            (opcional)</label><input id="mapUrl" placeholder="Cole aqui o link do Google Maps"><button id="saveMap"
+            class="primary">Salvar localização</button>
+          <p class="small">O mapa usa uma incorporação pública do Google Maps.</p>
+        </article>
+        <article class="admin-card">
+          <h2>◉ Visitas ao site</h2>
+          <div class="stat"><strong id="visitCount">—</strong><span>visitas registradas neste navegador</span></div>
+          <p class="small">Esta contagem não identifica quando ela entrou. Para registrar visitas de qualquer pessoa,
+            com data e horário, é necessário um serviço externo de analytics ou backend.</p><button id="clearVisits"
+            class="secondary">Zerar contador local</button>
+        </article>
+        <article class="admin-card">
+          <h2>⚙ Segurança local</h2><label>Nova senha do painel</label><input id="newPassword" type="password"
+            placeholder="Digite uma nova senha"><button id="changePassword" class="primary">Alterar senha</button>
+          <p class="small">Não use esta senha como proteção de conteúdo privado: o código do site é público no GitHub
+            Pages.</p>
+        </article>
+      </div>
+      <p class="save-status" id="saveStatus" aria-live="polite"></p>
+    </section>
+  </main>
+  <script src="fab.js"></script>
+</body>
+
+</html>
