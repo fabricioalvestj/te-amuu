@@ -11,3 +11,32 @@ async function renderGallery(){const grid=document.getElementById('galleryGrid')
 function tick(s){if(!s.startDate){setText('days','0');setText('startDateLabel','Configure a data inicial no painel FAB.');return}const start=new Date(s.startDate).getTime(),now=Date.now();if(!Number.isFinite(start)){setText('startDateLabel','Configure uma data válida no painel FAB.');return}let diff=Math.max(0,now-start);const days=Math.floor(diff/86400000);diff%=86400000;setText('days',days.toLocaleString('pt-BR'));setText('hours',String(Math.floor(diff/3600000)).padStart(2,'0'));diff%=3600000;setText('minutes',String(Math.floor(diff/60000)).padStart(2,'0'));setText('seconds',String(Math.floor(diff/1000)%60).padStart(2,'0'));setText('startDateLabel','Desde '+new Date(start).toLocaleString('pt-BR',{dateStyle:'long',timeStyle:'short'}))}
 async function init(){const s=settings();['heroEyebrow','heroTitle','heroSubtitle','heroNote','timerHeading','timerDescription','timerCaption','galleryHeading','galleryDescription','placeHeading','placeDescription','closingTitle','closingText','footerText'].forEach(k=>setText(k,s[k]));renderVerses(s);renderMap(s);await renderGallery();tick(s);setInterval(()=>tick(s),1000);const menu=document.querySelector('.menu-toggle');menu?.addEventListener('click',()=>document.querySelector('nav').classList.toggle('open'))}
 init();
+// Alternância entre modo claro e escuro
+const themeToggle = document.getElementById("themeToggle");
+
+function applyTheme(theme) {
+  const dark = theme === "dark";
+
+  document.body.classList.toggle("dark-mode", dark);
+
+  if (themeToggle) {
+    themeToggle.textContent = dark ? "☀️" : "🌙";
+    themeToggle.setAttribute(
+      "aria-label",
+      dark ? "Ativar modo claro" : "Ativar modo escuro"
+    );
+  }
+}
+
+// Recupera o tema escolhido anteriormente
+const savedTheme = localStorage.getItem("siteTheme") || "light";
+applyTheme(savedTheme);
+
+themeToggle?.addEventListener("click", () => {
+  const newTheme = document.body.classList.contains("dark-mode")
+    ? "light"
+    : "dark";
+
+  localStorage.setItem("siteTheme", newTheme);
+  applyTheme(newTheme);
+});
